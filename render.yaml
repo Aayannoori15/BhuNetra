@@ -27,7 +27,12 @@ services:
     buildCommand: npm install --include=dev && npm run build
     staticPublishPath: dist
     routes:
-      # Single Page Application fallback for client-side routing
+      - type: rewrite
+        source: /api/*
+        destination: https://bhunetra-backend.onrender.com/api/*
+      - type: rewrite
+        source: /static-data/*
+        destination: https://bhunetra-backend.onrender.com/static-data/*
       - type: rewrite
         source: /*
         destination: /index.html
